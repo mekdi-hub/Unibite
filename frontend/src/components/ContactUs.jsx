@@ -1,12 +1,10 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane, FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa'
-import { useLanguage } from '../contexts/LanguageContext'
 import { Button } from './ui'
 import axios from 'axios'
 
 const ContactUs = () => {
-  const { t } = useLanguage()
   const [formData, setFormData] = useState({
     name: '',
     email: '',

@@ -1,11 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useAuth } from '../contexts/AuthContext'
-import { useLanguage } from '../contexts/LanguageContext'
 import AdminLayout from './AdminLayout'
-import LanguageSwitcher from './LanguageSwitcher'
 
 const Users = () => {
-  const { t } = useLanguage()
   const [users, setUsers] = useState([])
   const [filteredUsers, setFilteredUsers] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
@@ -213,12 +210,11 @@ const Users = () => {
 
   return (
     <AdminLayout 
-      title={t('userManagement')}
-      subtitle={t('managePlatformUsers')}
+      title="User Management"
+      subtitle="Manage platform users"
     >
       {/* Header Actions */}
       <div className="flex justify-end items-center space-x-3 mb-6">
-        <LanguageSwitcher variant="compact" />
         <button
           onClick={() => setShowAddEmployee(true)}
           className="px-6 py-2.5 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg shadow-md hover:shadow-lg transition-all font-semibold flex items-center space-x-2"

@@ -3,15 +3,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import { FaSearch, FaMapMarkerAlt, FaStar, FaFilter, FaClock, FaFire, FaChevronLeft, FaChevronRight, FaBell, FaSignOutAlt } from 'react-icons/fa'
 import { useAuth } from '../contexts/AuthContext'
-import { useLanguage } from '../contexts/LanguageContext'
-import LanguageSwitcher from './LanguageSwitcher'
 import LogoutConfirmModal from './LogoutConfirmModal'
 import { getRestaurantImage, getRestaurantThumbnail } from '../utils/imageHelpers'
 import axios from 'axios'
 
 const Home = () => {
   const { user, logout, loading: authLoading } = useAuth()
-  const { t } = useLanguage()
   const navigate = useNavigate()
   const [searchQuery, setSearchQuery] = useState('')
   const [restaurants, setRestaurants] = useState([])
@@ -370,11 +367,6 @@ const Home = () => {
                         </div>
                       </div>
                       
-                      {/* Language Switcher Section */}
-                      <div className="px-3 sm:px-4 py-2.5 sm:py-3 border-b border-gray-100">
-                        <p className="text-[10px] sm:text-xs font-semibold text-gray-500 uppercase mb-2">Language</p>
-                        <LanguageSwitcher />
-                      </div>
                       
                       {/* Menu Items */}
                       <div className="py-1">
@@ -405,7 +397,6 @@ const Home = () => {
                 </div>
               ) : (
                 <>
-                  <LanguageSwitcher variant="compact" />
                   <Link to="/restaurant-registration" className="text-gray-700 hover:text-red-600 font-medium transition-colors hidden md:inline text-xs md:text-sm">
                     🏪 Partner with Us
                   </Link>

@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
-import { useLanguage } from '../contexts/LanguageContext'
 import { FaArrowLeft, FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaEdit, FaSave, FaTimes, FaGlobe } from 'react-icons/fa'
 import axios from 'axios'
 
 const Profile = () => {
   const { user, logout } = useAuth()
-  const { language, changeLanguage, t } = useLanguage()
   const navigate = useNavigate()
   const [editing, setEditing] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -151,7 +149,7 @@ const Profile = () => {
                 <div className="p-2 rounded-lg hover:bg-orange-50 transition-colors">
                   <FaArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                 </div>
-                <span className="font-medium hidden sm:inline">{t('back')}</span>
+                <span className="font-medium hidden sm:inline">Back</span>
               </button>
               
               <div className="h-8 w-px bg-gray-200 hidden sm:block"></div>
@@ -183,8 +181,8 @@ const Profile = () => {
                 <FaUser className="w-7 h-7 text-white" />
               </div>
               <div>
-                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">{t('myProfile')}</h2>
-                <p className="text-gray-600 mt-1 text-sm sm:text-base">{t('manageAccount')}</p>
+                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">My Profile</h2>
+                <p className="text-gray-600 mt-1 text-sm sm:text-base">Manage your account</p>
               </div>
             </div>
             
@@ -194,7 +192,7 @@ const Profile = () => {
                 className="flex items-center space-x-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-red-600 transition-all shadow-md"
               >
                 <FaEdit />
-                <span className="hidden sm:inline">{t('editProfile')}</span>
+                <span className="hidden sm:inline">Edit Profile</span>
               </button>
             )}
           </div>
@@ -225,7 +223,7 @@ const Profile = () => {
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   <FaUser className="inline mr-2 text-orange-500" />
-                  {t('name')}
+                  Name
                 </label>
                 <input
                   type="text"
@@ -246,7 +244,7 @@ const Profile = () => {
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   <FaEnvelope className="inline mr-2 text-orange-500" />
-                  {t('email')}
+                  Email
                 </label>
                 <input
                   type="email"
@@ -267,7 +265,7 @@ const Profile = () => {
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   <FaPhone className="inline mr-2 text-orange-500" />
-                  {t('phone')}
+                  Phone
                 </label>
                 <input
                   type="tel"
@@ -284,7 +282,7 @@ const Profile = () => {
                 />
                 {editing && (
                   <p className="text-xs text-gray-500 mt-1">
-                    {t('phoneNote')}
+                    Enter your phone number with country code (e.g., +251911234567)
                   </p>
                 )}
               </div>
@@ -293,7 +291,7 @@ const Profile = () => {
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   <FaMapMarkerAlt className="inline mr-2 text-orange-500" />
-                  {t('address')}
+                  Address
                 </label>
                 <textarea
                   name="address"
@@ -309,41 +307,6 @@ const Profile = () => {
                   }`}
                 />
               </div>
-
-              {/* Language Preference */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  <FaGlobe className="inline mr-2 text-orange-500" />
-                  {t('language')}
-                </label>
-                <div className="flex space-x-4">
-                  <button
-                    type="button"
-                    onClick={() => changeLanguage('en')}
-                    className={`flex-1 px-6 py-3 rounded-xl font-semibold transition-all ${
-                      language === 'en'
-                        ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-md'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
-                  >
-                    🇬🇧 {t('english')}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => changeLanguage('am')}
-                    className={`flex-1 px-6 py-3 rounded-xl font-semibold transition-all ${
-                      language === 'am'
-                        ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-md'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
-                  >
-                    🇪🇹 {t('amharic')}
-                  </button>
-                </div>
-                <p className="text-xs text-gray-500 mt-2">
-                  {t('selectPreferredLanguage')}
-                </p>
-              </div>
             </div>
 
             {/* Action Buttons */}
@@ -355,7 +318,7 @@ const Profile = () => {
                   className="flex-1 flex items-center justify-center space-x-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white py-3 rounded-xl font-semibold hover:from-green-600 hover:to-emerald-600 transition-all shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <FaSave />
-                  <span>{loading ? (t('loading')) : t('saveChanges')}</span>
+                  <span>{loading ? 'Saving...' : 'Save Changes'}</span>
                 </button>
                 <button
                   type="button"
@@ -364,7 +327,7 @@ const Profile = () => {
                   className="flex-1 flex items-center justify-center space-x-2 bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-300 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <FaTimes />
-                  <span>{t('cancel')}</span>
+                  <span>Cancel</span>
                 </button>
               </div>
             )}
@@ -374,7 +337,7 @@ const Profile = () => {
         {/* Additional Info */}
         <div className="mt-6 bg-blue-50 border-2 border-blue-200 rounded-xl p-4">
           <p className="text-sm text-blue-700">
-            <strong>{language === 'en' ? 'Note:' : 'ማስታወሻ:'}</strong> {t('profileNote')}
+            <strong>Note:</strong> Your profile information is used to personalize your experience and for order delivery purposes.
           </p>
         </div>
       </div>

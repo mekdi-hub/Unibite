@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { useEffect, lazy, Suspense } from 'react'
 import { AuthProvider } from './contexts/AuthContext'
 import { NotificationProvider } from './contexts/NotificationContext'
-import { LanguageProvider } from './contexts/LanguageContext'
 import { SettingsProvider } from './contexts/SettingsContext'
 import { checkAndClearOldCache } from './utils/cacheCleaner'
 import './styles/mobile.css'
@@ -65,14 +64,13 @@ function App() {
 
   return (
     <SettingsProvider>
-      <LanguageProvider>
-        <AuthProvider>
-          <NotificationProvider>
-            <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-              <ScrollToTop />
-              <div className="min-h-screen bg-gray-100">
-                <Suspense fallback={<PageLoader />}>
-                  <Routes>
+      <AuthProvider>
+        <NotificationProvider>
+          <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+            <ScrollToTop />
+            <div className="min-h-screen bg-gray-100">
+              <Suspense fallback={<PageLoader />}>
+                <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
@@ -104,11 +102,10 @@ function App() {
               <PWAInstallPrompt />
             </Suspense>
           </Suspense>
-          </div>
-        </Router>
-      </NotificationProvider>
-    </AuthProvider>
-  </LanguageProvider>
+        </div>
+      </Router>
+    </NotificationProvider>
+  </AuthProvider>
   </SettingsProvider>
   )
 }
