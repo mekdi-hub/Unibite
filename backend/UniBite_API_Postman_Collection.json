@@ -1,0 +1,820 @@
+{
+	"info": {
+		"_postman_id": "unibite-api-collection",
+		"name": "UniBite Food Delivery API",
+		"description": "Complete API collection for UniBite campus food delivery system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{auth_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://backendi.test/api",
+			"type": "string"
+		},
+		{
+			"key": "auth_token",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register Student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+                        
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@student.edu\",\n    \"password\": \"password123\",\n    \"password_confirmation\": \"password123\",\n    \"phone\": \"+1234567890\",\n    \"role\": \"student\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/register",
+							"host": ["{{base_url}}"],
+							"path": ["auth", "register"]
+						}
+					}
+				}
+,
+				{
+					"name": "Register Restaurant",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Restaurant Manager\",\n    \"email\": \"restaurant@unibite.com\",\n    \"password\": \"password123\",\n    \"password_confirmation\": \"password123\",\n    \"phone\": \"+1234567891\",\n    \"role\": \"restaurant\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/register",
+							"host": ["{{base_url}}"],
+							"path": ["auth", "register"]
+						}
+					}
+				},
+				{
+					"name": "Register Rider",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Delivery Rider\",\n    \"email\": \"rider@unibite.com\",\n    \"password\": \"password123\",\n    \"password_confirmation\": \"password123\",\n    \"phone\": \"+1234567892\",\n    \"role\": \"rider\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/register",
+							"host": ["{{base_url}}"],
+							"path": ["auth", "register"]
+						}
+					}
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    const response = pm.response.json();",
+									"    pm.collectionVariables.set('auth_token', response.token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"john@student.edu\",\n    \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/login",
+							"host": ["{{base_url}}"],
+							"path": ["auth", "login"]
+						}
+					}
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/auth/logout",
+							"host": ["{{base_url}}"],
+							"path": ["auth", "logout"]
+						}
+					}
+				}
+			]
+		}
+,
+		{
+			"name": "System",
+			"item": [
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/health",
+							"host": ["{{base_url}}"],
+							"path": ["health"]
+						}
+					}
+				},
+				{
+					"name": "System Stats",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/stats",
+							"host": ["{{base_url}}"],
+							"path": ["stats"]
+						}
+					}
+				},
+				{
+					"name": "Get User Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/profile",
+							"host": ["{{base_url}}"],
+							"path": ["profile"]
+						}
+					}
+				},
+				{
+					"name": "Dashboard",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/dashboard",
+							"host": ["{{base_url}}"],
+							"path": ["dashboard"]
+						}
+					}
+				}
+			]
+		}
+,
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Get All Categories",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/categories",
+							"host": ["{{base_url}}"],
+							"path": ["categories"]
+						}
+					}
+				},
+				{
+					"name": "Get Single Category",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/categories/1",
+							"host": ["{{base_url}}"],
+							"path": ["categories", "1"]
+						}
+					}
+				},
+				{
+					"name": "Create Category (Admin Only)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"New Category\",\n    \"description\": \"Description of the new category\",\n    \"image\": \"category-image.jpg\",\n    \"status\": \"active\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/categories",
+							"host": ["{{base_url}}"],
+							"path": ["categories"]
+						}
+					}
+				},
+				{
+					"name": "Update Category (Admin Only)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Category\",\n    \"description\": \"Updated description\",\n    \"status\": \"active\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/categories/1",
+							"host": ["{{base_url}}"],
+							"path": ["categories", "1"]
+						}
+					}
+				}
+			]
+		}
+,
+		{
+			"name": "Restaurants",
+			"item": [
+				{
+					"name": "Get All Restaurants",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/restaurants",
+							"host": ["{{base_url}}"],
+							"path": ["restaurants"]
+						}
+					}
+				},
+				{
+					"name": "Get Single Restaurant",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/restaurants/1",
+							"host": ["{{base_url}}"],
+							"path": ["restaurants", "1"]
+						}
+					}
+				},
+				{
+					"name": "Get My Restaurant",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/my-restaurant",
+							"host": ["{{base_url}}"],
+							"path": ["my-restaurant"]
+						}
+					}
+				},
+				{
+					"name": "Create Restaurant",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 3,\n    \"restaurant_name\": \"New Restaurant\",\n    \"description\": \"Fresh and delicious food\",\n    \"address\": \"Building C, Level 1\",\n    \"phone\": \"+1234567893\",\n    \"opening_time\": \"08:00\",\n    \"closing_time\": \"22:00\",\n    \"delivery_fee\": 3.50,\n    \"min_order_amount\": 12.00\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/restaurants",
+							"host": ["{{base_url}}"],
+							"path": ["restaurants"]
+						}
+					}
+				}
+			]
+		}
+,
+		{
+			"name": "Menu Items",
+			"item": [
+				{
+					"name": "Get All Menu Items",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/menu-items",
+							"host": ["{{base_url}}"],
+							"path": ["menu-items"]
+						}
+					}
+				},
+				{
+					"name": "Get Menu Items by Category",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/menu-items?category_id=1",
+							"host": ["{{base_url}}"],
+							"path": ["menu-items"],
+							"query": [
+								{
+									"key": "category_id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Menu Items by Restaurant",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/menu-items?restaurant_id=1",
+							"host": ["{{base_url}}"],
+							"path": ["menu-items"],
+							"query": [
+								{
+									"key": "restaurant_id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Available Menu Items",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/menu-items?available=true",
+							"host": ["{{base_url}}"],
+							"path": ["menu-items"],
+							"query": [
+								{
+									"key": "available",
+									"value": "true"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Single Menu Item",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{base_url}}/menu-items/1",
+							"host": ["{{base_url}}"],
+							"path": ["menu-items", "1"]
+						}
+					}
+				},
+				{
+					"name": "Create Menu Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"category_id\": 1,\n    \"restaurant_id\": 1,\n    \"name\": \"New Menu Item\",\n    \"description\": \"Delicious new item\",\n    \"price\": 15.99,\n    \"image\": \"item-image.jpg\",\n    \"is_available\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/menu-items",
+							"host": ["{{base_url}}"],
+							"path": ["menu-items"]
+						}
+					}
+				}
+			]
+		}
+,
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Get My Orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/orders",
+							"host": ["{{base_url}}"],
+							"path": ["orders"]
+						}
+					}
+				},
+				{
+					"name": "Get Orders by Status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/orders?status=pending",
+							"host": ["{{base_url}}"],
+							"path": ["orders"],
+							"query": [
+								{
+									"key": "status",
+									"value": "pending"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"restaurant_id\": 1,\n    \"delivery_address\": \"Dorm Room 123, Building A\",\n    \"payment_method\": \"cash_on_delivery\",\n    \"notes\": \"Please call when you arrive\",\n    \"items\": [\n        {\n            \"menu_item_id\": 1,\n            \"quantity\": 2\n        },\n        {\n            \"menu_item_id\": 4,\n            \"quantity\": 1\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/orders",
+							"host": ["{{base_url}}"],
+							"path": ["orders"]
+						}
+					}
+				},
+				{
+					"name": "Get Single Order",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/orders/1",
+							"host": ["{{base_url}}"],
+							"path": ["orders", "1"]
+						}
+					}
+				},
+				{
+					"name": "Update Order Status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"accepted\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/orders/1/status",
+							"host": ["{{base_url}}"],
+							"path": ["orders", "1", "status"]
+						}
+					}
+				},
+				{
+					"name": "Cancel Order",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/orders/1/cancel",
+							"host": ["{{base_url}}"],
+							"path": ["orders", "1", "cancel"]
+						}
+					}
+				}
+			]
+		}
+,
+		{
+			"name": "Deliveries",
+			"item": [
+				{
+					"name": "Get Available Deliveries",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/deliveries/available",
+							"host": ["{{base_url}}"],
+							"path": ["deliveries", "available"]
+						}
+					}
+				},
+				{
+					"name": "Accept Delivery",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/deliveries/1/accept",
+							"host": ["{{base_url}}"],
+							"path": ["deliveries", "1", "accept"]
+						}
+					}
+				},
+				{
+					"name": "Update Delivery Status - Picked Up",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"picked_up\",\n    \"notes\": \"Food picked up from restaurant\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/deliveries/1/status",
+							"host": ["{{base_url}}"],
+							"path": ["deliveries", "1", "status"]
+						}
+					}
+				},
+				{
+					"name": "Update Delivery Status - Delivered",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"delivered\",\n    \"notes\": \"Food delivered successfully\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/deliveries/1/status",
+							"host": ["{{base_url}}"],
+							"path": ["deliveries", "1", "status"]
+						}
+					}
+				},
+				{
+					"name": "Get My Deliveries",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/my-deliveries",
+							"host": ["{{base_url}}"],
+							"path": ["my-deliveries"]
+						}
+					}
+				}
+			]
+		}
+,
+		{
+			"name": "Payments",
+			"item": [
+				{
+					"name": "Process Payment - Mobile Payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"payment_method\": \"mobile_payment\",\n    \"transaction_id\": \"TXN123456789\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/orders/1/payment",
+							"host": ["{{base_url}}"],
+							"path": ["orders", "1", "payment"]
+						}
+					}
+				},
+				{
+					"name": "Process Payment - Digital Wallet",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"payment_method\": \"digital_wallet\",\n    \"transaction_id\": \"WALLET987654321\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/orders/1/payment",
+							"host": ["{{base_url}}"],
+							"path": ["orders", "1", "payment"]
+						}
+					}
+				},
+				{
+					"name": "Process Payment - Cash on Delivery",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"payment_method\": \"cash_on_delivery\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/orders/1/payment",
+							"host": ["{{base_url}}"],
+							"path": ["orders", "1", "payment"]
+						}
+					}
+				},
+				{
+					"name": "Get Payment Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/orders/1/payment",
+							"host": ["{{base_url}}"],
+							"path": ["orders", "1", "payment"]
+						}
+					}
+				},
+				{
+					"name": "Confirm Cash Payment (Rider)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/orders/1/payment/confirm-cash",
+							"host": ["{{base_url}}"],
+							"path": ["orders", "1", "payment", "confirm-cash"]
+						}
+					}
+				}
+			]
+		}
+	]
+}

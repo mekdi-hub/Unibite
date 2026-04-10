@@ -1,0 +1,22 @@
+
+   InvalidArgumentException 
+
+  Attribute [inertia] does not exist.
+
+  at vendor\laravel\framework\src\Illuminate\Routing\RouteRegistrar.php:120
+    116▕      */
+    117▕     public function attribute($key, $value)
+    118▕     {
+    119▕         if (! in_array($key, $this->allowedAttributes)) {
+  ➜ 120▕             throw new InvalidArgumentException("Attribute [{$key}] does not exist.");
+    121▕         }
+    122▕ 
+    123▕         if ($key === 'middleware') {
+    124▕             $value = array_filter(Arr::wrap($value));
+
+  1   vendor\laravel\framework\src\Illuminate\Routing\Router.php:1527
+      Illuminate\Routing\RouteRegistrar::attribute("inertia", "settings/appearance")
+
+  2   vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:363
+      Illuminate\Routing\Router::__call("inertia")
+
