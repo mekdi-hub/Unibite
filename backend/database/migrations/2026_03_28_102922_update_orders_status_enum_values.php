@@ -14,14 +14,23 @@ return new class extends Migration
             ->where('status', 'accepted')
             ->update(['status' => 'confirmed']);
 
-        // Modify the enum column to use the new values
-        DB::statement("ALTER TABLE orders MODIFY COLUMN status ENUM('pending', 'confirmed', 'preparing', 'ready', 'out_for_delivery', 'delivered', 'completed', 'cancelled') NOT NULL DEFAULT 'pending'");
+        // Modify the enum column to use the new values (PostgreSQL syntax)
+        DB::statement("ALTER TABLE orders DROP CONSTRAINT IF EXISTS orders_status_check");
+        DB::statement("ALTER TABLE orders ALTER COLUMN status DROP DEFAULT");
+        DB::statement("ALTER TABLE orders ALTER COLUMN status TYPE VARCHAR(20)");
+        DB::statement("ALTER TABLE orders ADD CONSTRAINT orders_status_check CHECK (status IN ('pending', 'confirmed', 'preparing', 'ready', 'out_for_delivery', 'delivered', 'completed', 'cancelled'))");
+        DB::statement("ALTER TABLE orders ALTER COLUMN status SET DEFAULT 'pending'");
+        DB::statement("ALTER TABLE orders ALTER COLUMN status SET NOT NULL");
     }
 
     public function down(): void
     {
-        // Revert back to old enum values
-        DB::statement("ALTER TABLE orders MODIFY COLUMN status ENUM('pending', 'accepted', 'preparing', 'ready', 'out_for_delivery', 'delivered', 'cancelled') NOT NULL DEFAULT 'pending'");
+        // Revert back to old enum values (PostgreSQL syntax)
+        DB::statement("ALTER TABLE orders DROP CONSTRAINT IF EXISTS orders_status_check");
+        DB::statement("ALTER TABLE orders ALTER COLUMN status DROP DEFAULT");
+        DB::statement("ALTER TABLE orders ADD CONSTRAINT orders_status_check CHECK (status IN ('pending', 'accepted', 'preparing', 'ready', 'out_for_delivery', 'delivered', 'cancelled'))");
+        DB::statement("ALTER TABLE orders ALTER COLUMN status SET DEFAULT 'pending'");
+        DB::statement("ALTER TABLE orders ALTER COLUMN status SET NOT NULL");
         
         // Update 'confirmed' back to 'accepted'
         DB::table('orders')

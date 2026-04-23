@@ -12,11 +12,16 @@ return new class extends Migration
         // First, update any existing status values that don't match the new enum
         DB::statement("UPDATE orders SET status = 'pending' WHERE status NOT IN ('pending', 'confirmed', 'preparing', 'delivered', 'cancelled')");
         
+        // Modify existing status column to include new statuses (PostgreSQL syntax)
+        DB::statement("ALTER TABLE orders DROP CONSTRAINT IF EXISTS orders_status_check");
+        DB::statement("ALTER TABLE orders ALTER COLUMN status DROP DEFAULT");
+        DB::statement("ALTER TABLE orders ALTER COLUMN status TYPE VARCHAR(20)");
+        DB::statement("ALTER TABLE orders ADD CONSTRAINT orders_status_check CHECK (status IN ('pending', 'confirmed', 'preparing', 'ready_for_pickup', 'assigned_to_rider', 'picked_up', 'out_for_delivery', 'delivered', 'cancelled'))");
+        DB::statement("ALTER TABLE orders ALTER COLUMN status SET DEFAULT 'pending'");
+        DB::statement("ALTER TABLE orders ALTER COLUMN status SET NOT NULL");
+        
         // Add fields to orders table
         Schema::table('orders', function (Blueprint $table) {
-            // Modify existing status column to include new statuses
-            DB::statement("ALTER TABLE orders MODIFY COLUMN status ENUM('pending', 'confirmed', 'preparing', 'ready_for_pickup', 'assigned_to_rider', 'picked_up', 'out_for_delivery', 'delivered', 'cancelled') NOT NULL DEFAULT 'pending'");
-            
             $table->timestamp('ready_at')->nullable()->after('status');
             $table->timestamp('assigned_at')->nullable()->after('ready_at');
             $table->timestamp('picked_up_at')->nullable()->after('assigned_at');

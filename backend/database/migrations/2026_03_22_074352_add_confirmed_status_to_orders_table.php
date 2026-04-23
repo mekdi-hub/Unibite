@@ -12,8 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Modify the status enum to include 'confirmed'
-        DB::statement("ALTER TABLE `orders` MODIFY COLUMN `status` ENUM('pending', 'confirmed', 'accepted', 'preparing', 'ready', 'out_for_delivery', 'delivered', 'cancelled', 'completed') DEFAULT 'pending'");
+        // Modify the status enum to include 'confirmed' (PostgreSQL syntax)
+        DB::statement("ALTER TABLE orders DROP CONSTRAINT IF EXISTS orders_status_check");
+        DB::statement("ALTER TABLE orders ALTER COLUMN status DROP DEFAULT");
+        DB::statement("ALTER TABLE orders ALTER COLUMN status TYPE VARCHAR(20)");
+        DB::statement("ALTER TABLE orders ADD CONSTRAINT orders_status_check CHECK (status IN ('pending', 'confirmed', 'accepted', 'preparing', 'ready', 'out_for_delivery', 'delivered', 'cancelled', 'completed'))");
+        DB::statement("ALTER TABLE orders ALTER COLUMN status SET DEFAULT 'pending'");
     }
 
     /**
@@ -21,7 +25,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Revert back to original enum
-        DB::statement("ALTER TABLE `orders` MODIFY COLUMN `status` ENUM('pending', 'accepted', 'preparing', 'ready', 'out_for_delivery', 'delivered', 'cancelled') DEFAULT 'pending'");
+        // Revert back to original enum (PostgreSQL syntax)
+        DB::statement("ALTER TABLE orders DROP CONSTRAINT IF EXISTS orders_status_check");
+        DB::statement("ALTER TABLE orders ALTER COLUMN status DROP DEFAULT");
+        DB::statement("ALTER TABLE orders ADD CONSTRAINT orders_status_check CHECK (status IN ('pending', 'accepted', 'preparing', 'ready', 'out_for_delivery', 'delivered', 'cancelled'))");
+        DB::statement("ALTER TABLE orders ALTER COLUMN status SET DEFAULT 'pending'");
     }
 };

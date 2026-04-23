@@ -20,8 +20,12 @@ return new class extends Migration
             $table->string('bank_name')->nullable()->after('bank_account_number');
         });
 
-        // Update status enum to include 'pending' and 'approved'
-        DB::statement("ALTER TABLE restaurants MODIFY COLUMN status ENUM('pending', 'active', 'inactive', 'suspended', 'approved') DEFAULT 'pending'");
+        // Update status enum to include 'pending' and 'approved' (PostgreSQL syntax)
+        DB::statement("ALTER TABLE restaurants DROP CONSTRAINT IF EXISTS restaurants_status_check");
+        DB::statement("ALTER TABLE restaurants ALTER COLUMN status DROP DEFAULT");
+        DB::statement("ALTER TABLE restaurants ALTER COLUMN status TYPE VARCHAR(20)");
+        DB::statement("ALTER TABLE restaurants ADD CONSTRAINT restaurants_status_check CHECK (status IN ('pending', 'active', 'inactive', 'suspended', 'approved'))");
+        DB::statement("ALTER TABLE restaurants ALTER COLUMN status SET DEFAULT 'pending'");
     }
 
     /**
@@ -40,7 +44,10 @@ return new class extends Migration
             ]);
         });
 
-        // Revert status enum
-        DB::statement("ALTER TABLE restaurants MODIFY COLUMN status ENUM('active', 'inactive', 'suspended') DEFAULT 'active'");
+        // Revert status enum (PostgreSQL syntax)
+        DB::statement("ALTER TABLE restaurants DROP CONSTRAINT IF EXISTS restaurants_status_check");
+        DB::statement("ALTER TABLE restaurants ALTER COLUMN status DROP DEFAULT");
+        DB::statement("ALTER TABLE restaurants ADD CONSTRAINT restaurants_status_check CHECK (status IN ('active', 'inactive', 'suspended'))");
+        DB::statement("ALTER TABLE restaurants ALTER COLUMN status SET DEFAULT 'active'");
     }
 };
