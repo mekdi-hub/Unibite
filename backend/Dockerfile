@@ -1,4 +1,4 @@
-FROM php:8.2-cli
+FROM php:8.4-cli
 
 WORKDIR /var/www
 
@@ -35,22 +35,27 @@ RUN docker-php-ext-install \
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # =========================
-# Copy project files
+# Copy project
 # =========================
 COPY . .
 
 # =========================
-# Install dependencies
+# Install dependencies (SAFE MODE)
 # =========================
 RUN composer install \
     --no-dev \
     --prefer-dist \
     --no-interaction \
     --no-progress \
-    --optimize-autoloader
+    --ignore-platform-reqs
 
 # =========================
-# Expose port
+# Permissions (important for Laravel)
+# =========================
+RUN chmod -R 775 storage bootstrap/cache
+
+# =========================
+# Port
 # =========================
 EXPOSE 10000
 
