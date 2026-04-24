@@ -28,7 +28,7 @@ const Notifications = () => {
   const fetchPendingRestaurants = async () => {
     try {
       setLoading(true)
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.get(`${backendUrl}/api/admin/restaurants/pending`, {
@@ -50,7 +50,7 @@ const Notifications = () => {
 
   const handleApprove = async (restaurantId) => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.put(
@@ -77,7 +77,7 @@ const Notifications = () => {
   const handleReject = async (restaurantId) => {
     if (window.confirm('Are you sure you want to reject this restaurant?')) {
       try {
-        const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+        const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
         const token = localStorage.getItem('token')
         
         const response = await axios.put(
@@ -114,7 +114,7 @@ const Notifications = () => {
 
   const handleDelete = async (notificationIds) => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       await axios.post(
@@ -313,7 +313,7 @@ const Notifications = () => {
                                       </span>
                                     </div>
                                     <a
-                                      href={`${import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'}/storage/${restaurant.business_license}`}
+                                      href={`${import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'}/storage/${restaurant.business_license}`}
                                       target="_blank"
                                       rel="noopener noreferrer"
                                       className="block w-full bg-white hover:bg-purple-50 text-purple-700 font-semibold py-2 px-4 rounded-lg transition-all text-center border border-purple-300"
@@ -344,7 +344,7 @@ const Notifications = () => {
                                       {JSON.parse(restaurant.menu_images).map((image, idx) => (
                                         <a
                                           key={idx}
-                                          href={`${import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'}/storage/${image}`}
+                                          href={`${import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'}/storage/${image}`}
                                           target="_blank"
                                           rel="noopener noreferrer"
                                           className="block w-full bg-white hover:bg-orange-50 text-orange-700 font-semibold py-2 px-4 rounded-lg transition-all text-center border border-orange-300"

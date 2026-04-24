@@ -28,7 +28,7 @@ const Users = () => {
     try {
       setLoading(true)
       const token = localStorage.getItem('token')
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
       const params = new URLSearchParams()
       if (filterRole !== 'all') params.append('role', filterRole)
@@ -58,7 +58,7 @@ const Users = () => {
       const user = users.find(u => u.id === userId)
       const newStatus = user.status === 'active' ? 'inactive' : 'active'
       const token = localStorage.getItem('token')
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
       const response = await fetch(`${backendUrl}/api/admin/users/${userId}/status`, {
         method: 'PUT',
@@ -90,7 +90,7 @@ const Users = () => {
     if (window.confirm('Are you sure you want to delete this user?')) {
       try {
         const token = localStorage.getItem('token')
-        const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+        const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
         
         const response = await fetch(`${backendUrl}/api/admin/users/${userId}`, {
           method: 'DELETE',
@@ -164,7 +164,7 @@ const Users = () => {
     e.preventDefault()
     try {
       const token = localStorage.getItem('token')
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
       const response = await fetch(`${backendUrl}/api/admin/users`, {
         method: 'POST',

@@ -49,7 +49,7 @@ const RiderDashboard = () => {
 
   const fetchRiderData = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       if (!token) {
@@ -105,7 +105,7 @@ const RiderDashboard = () => {
 
   const fetchAvailableDeliveries = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.get(`${backendUrl}/api/deliveries/available`, {
@@ -127,7 +127,7 @@ const RiderDashboard = () => {
 
   const fetchNotificationCount = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.get(`${backendUrl}/api/rider/notifications`, {
@@ -150,7 +150,7 @@ const RiderDashboard = () => {
 
   const toggleOnlineStatus = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       if (!token) {

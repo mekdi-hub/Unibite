@@ -32,7 +32,7 @@ const RiderNotifications = () => {
       }
       
       const token = localStorage.getItem('token')
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
       // Ensure IDs are integers
       const deliveryId = parseInt(data.delivery_id)
@@ -117,7 +117,7 @@ const RiderNotifications = () => {
         : (notification.data || {})
       
       const token = localStorage.getItem('token')
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
       const response = await fetch(`${backendUrl}/api/rider/deliveries/reject`, {
         method: 'POST',

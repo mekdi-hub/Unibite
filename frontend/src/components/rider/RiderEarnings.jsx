@@ -14,7 +14,7 @@ const RiderEarnings = () => {
 
   const fetchEarnings = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.get(`${backendUrl}/api/rider/earnings?period=${selectedPeriod}`, {
@@ -52,7 +52,7 @@ const RiderEarnings = () => {
 
   const fetchEarningsHistory = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.get(`${backendUrl}/api/rider/earnings-history?period=${selectedPeriod}`, {

@@ -66,7 +66,7 @@ const RestaurantDashboard = () => {
 
   const fetchRestaurantData = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.get(`${backendUrl}/api/my-restaurant`, {
@@ -90,7 +90,7 @@ const RestaurantDashboard = () => {
 
   const fetchNotificationCount = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.get(`${backendUrl}/api/restaurant/notifications`, {
@@ -113,7 +113,7 @@ const RestaurantDashboard = () => {
 
   const fetchPendingOrders = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.get(`${backendUrl}/api/restaurant/orders?status=pending`, {

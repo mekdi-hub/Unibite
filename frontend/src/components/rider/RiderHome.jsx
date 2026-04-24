@@ -21,7 +21,7 @@ const RiderHome = ({ isOnline, toggleOnlineStatus }) => {
 
   const fetchDashboardData = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       if (!token) {
@@ -65,7 +65,7 @@ const RiderHome = ({ isOnline, toggleOnlineStatus }) => {
   }
   const fetchEarnings = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       if (!token) {
@@ -104,7 +104,7 @@ const RiderHome = ({ isOnline, toggleOnlineStatus }) => {
 
   const fetchActiveDelivery = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.get(`${backendUrl}/api/rider/active-delivery`, {
@@ -128,7 +128,7 @@ const RiderHome = ({ isOnline, toggleOnlineStatus }) => {
 
   const fetchAvailableOrders = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.get(`${backendUrl}/api/deliveries/available`, {
@@ -151,7 +151,7 @@ const RiderHome = ({ isOnline, toggleOnlineStatus }) => {
 
   const acceptOrder = async (orderId) => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.post(`${backendUrl}/api/deliveries/${orderId}/accept`, {}, {

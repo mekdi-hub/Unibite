@@ -111,7 +111,7 @@ const Checkout = () => {
     setLoading(true)
 
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
 
       const orderData = {
         restaurant_id: restaurant.id,
@@ -189,7 +189,7 @@ const Checkout = () => {
       
       // Check if it's a timeout error
       if (error.code === 'ECONNABORTED' || error.message?.includes('timeout')) {
-        errorMessage = 'Request timed out. The backend server might not be running. Please make sure the Laravel backend is running on http://localhost:8000'
+        errorMessage = 'Request timed out. The backend server might not be responding. Please try again later.'
         alert(errorMessage)
         setLoading(false)
         return
@@ -197,7 +197,7 @@ const Checkout = () => {
       
       // Check if it's a network error
       if (error.message === 'Network Error' || !error.response) {
-        errorMessage = 'Cannot connect to backend server. Please make sure the Laravel backend is running on http://localhost:8000'
+        errorMessage = 'Cannot connect to backend server. Please check your internet connection and try again.'
         alert(errorMessage)
         setLoading(false)
         return

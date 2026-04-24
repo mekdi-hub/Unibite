@@ -30,7 +30,7 @@ const RiderProfile = () => {
 
   const fetchRiderProfile = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.get(`${backendUrl}/api/rider/profile`, {
@@ -108,7 +108,7 @@ const RiderProfile = () => {
   const handleUpdateProfile = async (e) => {
     e.preventDefault()
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const formDataToSend = new FormData()
@@ -150,7 +150,7 @@ const RiderProfile = () => {
     }
     
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.put(
@@ -181,7 +181,7 @@ const RiderProfile = () => {
 
   const updateRiderStatus = async (newStatus) => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.put(`${backendUrl}/api/rider/status`, {

@@ -45,7 +45,7 @@ export const NotificationProvider = ({ children }) => {
   const fetchNotifications = async (silent = false) => {
     try {
       const token = localStorage.getItem('token')
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
       const response = await fetch(`${backendUrl}/api/notifications`, {
         headers: {
@@ -103,7 +103,7 @@ export const NotificationProvider = ({ children }) => {
     // Then update server in background
     try {
       const token = localStorage.getItem('token')
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
       const response = await fetch(`${backendUrl}/api/notifications/${notificationId}/read`, {
         method: 'PUT',
@@ -142,7 +142,7 @@ export const NotificationProvider = ({ children }) => {
   const markAllAsRead = async () => {
     try {
       const token = localStorage.getItem('token')
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
       const response = await fetch(`${backendUrl}/api/notifications/mark-all-read`, {
         method: 'PUT',

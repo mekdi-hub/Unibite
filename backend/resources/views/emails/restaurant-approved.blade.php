@@ -114,7 +114,7 @@
         </div>
 
         <div style="text-align: center;">
-            <a href="{{ config('app.frontend_url', 'http://localhost:3000') }}/login" class="button">
+            <a href="{{ config('app.frontend_url', 'https://unibite-gray.vercel.app') }}/login" class="button">
                 🚀 Login to Dashboard
             </a>
         </div>

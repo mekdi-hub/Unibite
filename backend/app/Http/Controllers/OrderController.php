@@ -184,7 +184,7 @@ class OrderController extends Controller
                 $formattedPhone = $this->formatPhoneForChapa($userPhone);
                 
                 // Get frontend URL from environment
-                $frontendUrl = env('FRONTEND_URL', 'http://localhost:3000');
+                $frontendUrl = env('FRONTEND_URL', 'https://unibite-gray.vercel.app');
                 
                 // Generate transaction reference that includes checkout_id for easier tracking
                 $txRef = \App\Services\ChapaService::generateTxRef(time());

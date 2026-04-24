@@ -67,7 +67,7 @@ class GoogleAuthController extends Controller
             $token = $user->createToken('auth_token')->plainTextToken;
 
             // Redirect to frontend with token
-            $frontendUrl = config('app.frontend_url', 'http://localhost:3000');
+            $frontendUrl = config('app.frontend_url', 'https://unibite-gray.vercel.app');
             \Log::info('Redirecting to frontend', ['url' => $frontendUrl]);
             
             return redirect()->away("{$frontendUrl}/auth/google/callback?token={$token}&user=" . urlencode(json_encode($user)));
@@ -78,7 +78,7 @@ class GoogleAuthController extends Controller
                 'trace' => $e->getTraceAsString()
             ]);
             
-            $frontendUrl = config('app.frontend_url', 'http://localhost:3000');
+            $frontendUrl = config('app.frontend_url', 'https://unibite-gray.vercel.app');
             return redirect()->away("{$frontendUrl}/login?error=google_auth_failed&message=" . urlencode($e->getMessage()));
         }
     }

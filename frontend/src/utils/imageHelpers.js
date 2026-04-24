@@ -25,7 +25,7 @@ export const getRestaurantImage = (restaurant) => {
 export const getFoodImage = (item) => {
   // If item has an uploaded image, construct the full URL
   if (item?.image) {
-    const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
     return `${backendUrl}/storage/${item.image}`
   }
   

@@ -57,7 +57,7 @@ const PaymentCallback = () => {
       if (!checkoutId && txRef && token) {
         console.log('🔍 No checkout_id found, trying to retrieve from tx_ref:', txRef)
         try {
-          const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+          const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
           const response = await axios.get(
             `${backendUrl}/api/orders/checkout-from-txref/${txRef}`,
             {
@@ -86,7 +86,7 @@ const PaymentCallback = () => {
         console.log('✅ Checkout session found, proceeding with order creation')
         
         try {
-          const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+          const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
 
           if (!token) {
             console.error('❌ No authentication token found!')
@@ -109,7 +109,7 @@ const PaymentCallback = () => {
           } catch (healthError) {
             console.error('❌ Backend health check failed:', healthError.message)
             setStatus('failed')
-            setMessage('Cannot connect to backend server. Please make sure the Laravel backend is running on http://localhost:8000 with: php artisan serve --host=0.0.0.0 --port=8000')
+            setMessage('Cannot connect to backend server. Please make sure the Laravel backend is running on https://unibite-sxc9.onrender.com/api with: php artisan serve --host=0.0.0.0 --port=8000')
             return
           }
           
@@ -152,7 +152,7 @@ const PaymentCallback = () => {
           // Check if it's a network error
           if (error.message === 'Network Error' || !error.response) {
             setStatus('failed')
-            setMessage('Cannot connect to backend server. Please check if the Laravel backend is running on http://localhost:8000')
+            setMessage('Cannot connect to backend server. Please check if the Laravel backend is running on https://unibite-sxc9.onrender.com/api')
             return
           }
           

@@ -63,7 +63,7 @@ const RestaurantRegistration = () => {
     setLoading(true)
 
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const submitData = new FormData()
       
       // Append form data

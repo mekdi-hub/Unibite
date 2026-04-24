@@ -266,7 +266,7 @@ const RestaurantMenu = () => {
       {/* Menu Items Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {menuItems.map((item) => {
-          const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+          const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
           const imageUrl = item.image ? `${backendUrl}/storage/${item.image}` : null
           
           console.log('Menu item:', item.name)

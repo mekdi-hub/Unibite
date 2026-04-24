@@ -44,7 +44,7 @@ const RiderDeliveries = ({ isOnline }) => {
   const fetchAvailableDeliveries = async () => {
     setError(null)
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.get(`${backendUrl}/api/deliveries/available`, {
@@ -79,7 +79,7 @@ const RiderDeliveries = ({ isOnline }) => {
 
   const fetchActiveDelivery = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.get(`${backendUrl}/api/rider/active-delivery`, {
@@ -113,7 +113,7 @@ const RiderDeliveries = ({ isOnline }) => {
 
   const acceptOrder = async (deliveryId) => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       // Find the delivery to get the order_id
@@ -165,7 +165,7 @@ const RiderDeliveries = ({ isOnline }) => {
     if (!activeDelivery) return
 
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.put(`${backendUrl}/api/deliveries/${activeDelivery.id}/status`, {

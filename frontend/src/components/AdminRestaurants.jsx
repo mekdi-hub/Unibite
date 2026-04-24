@@ -25,7 +25,7 @@ const AdminRestaurants = () => {
     try {
       setLoading(true)
       const token = localStorage.getItem('token')
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
       let endpoint = `${backendUrl}/api/admin/restaurants`
       if (filter === 'pending') {
@@ -54,7 +54,7 @@ const AdminRestaurants = () => {
   const handleApprove = async (restaurantId) => {
     try {
       const token = localStorage.getItem('token')
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
       const response = await axios.post(
         `${backendUrl}/api/admin/restaurants/${restaurantId}/approve`,
@@ -83,7 +83,7 @@ const AdminRestaurants = () => {
 
     try {
       const token = localStorage.getItem('token')
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
       const response = await axios.post(
         `${backendUrl}/api/admin/restaurants/${restaurantId}/reject`,
@@ -179,7 +179,7 @@ const AdminRestaurants = () => {
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {restaurants.map((restaurant) => {
-              const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+              const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
               let menuImages = []
               try {
                 menuImages = restaurant.menu_images ? JSON.parse(restaurant.menu_images) : []
@@ -359,7 +359,7 @@ const AdminRestaurants = () => {
                         <div className="text-6xl mb-4">📄</div>
                         <p className="text-gray-600 mb-4">PDF Document</p>
                         <a
-                          href={`${import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'}/storage/${selectedRestaurant.business_license}`}
+                          href={`${import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'}/storage/${selectedRestaurant.business_license}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-block bg-red-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-red-600 transition-all"
@@ -369,7 +369,7 @@ const AdminRestaurants = () => {
                       </div>
                     ) : (
                       <img
-                        src={`${import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'}/storage/${selectedRestaurant.business_license}`}
+                        src={`${import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'}/storage/${selectedRestaurant.business_license}`}
                         alt="Business License"
                         className="w-full h-auto"
                         onError={(e) => {
@@ -397,7 +397,7 @@ const AdminRestaurants = () => {
                       {menuImages.map((imagePath, idx) => (
                         <div key={idx} className="border-2 border-gray-200 rounded-xl overflow-hidden">
                           <img
-                            src={`${import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'}/storage/${imagePath}`}
+                            src={`${import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'}/storage/${imagePath}`}
                             alt={`Menu ${idx + 1}`}
                             className="w-full h-48 object-cover"
                             onError={(e) => {

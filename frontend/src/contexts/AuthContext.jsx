@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }) => {
     const checkAuth = async () => {
       if (token) {
         try {
-          const response = await axios.get('/api/user', {
+          const response = await axios.get('/user', {
             timeout: 30000 // Increase timeout to 30 seconds
           })
           const userData = response.data
@@ -104,7 +104,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       console.log('Attempting login with:', { email, baseURL: axios.defaults.baseURL })
-      const response = await axios.post('/api/auth/login', { email, password })
+      const response = await axios.post('/auth/login', { email, password })
       console.log('Login response:', response.data)
       const { user, token } = response.data
       
@@ -127,7 +127,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (name, email, password, password_confirmation, phone, role) => {
     try {
-      const response = await axios.post('/api/auth/register', {
+      const response = await axios.post('/auth/register', {
         name,
         email,
         password,
@@ -156,7 +156,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await axios.post('/api/auth/logout')
+      await axios.post('/auth/logout')
     } catch (error) {
       console.error('Logout error:', error)
     } finally {

@@ -41,7 +41,7 @@ const AdminDashboard = () => {
     try {
       setLoading(true)
       const token = localStorage.getItem('token')
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
       console.log('Fetching dashboard data...')
       console.log('Backend URL:', backendUrl)
@@ -548,7 +548,7 @@ const AdminDashboard = () => {
               {/* Restaurant Cards with Menu Images */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {pendingRestaurants.slice(0, 6).map((restaurant) => {
-                  const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+                  const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
                   let menuImages = []
                   try {
                     menuImages = restaurant.menu_images ? JSON.parse(restaurant.menu_images) : []
