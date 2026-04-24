@@ -1,5 +1,3 @@
 {
-  "installCommand": "cd frontend && npm install --force",
-  "buildCommand": "cd frontend && npm run build",
-  "outputDirectory": "frontend/dist"
+  "buildCommand": "npm ci && npm run build"
 }
