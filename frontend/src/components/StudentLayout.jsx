@@ -136,23 +136,6 @@ const StudentLayout = ({ children, title, subtitle }) => {
               </svg>
               <span>Notifications</span>
             </button>
-            
-            <button
-              onClick={() => {
-                navigate('/profile')
-                setSidebarOpen(false)
-              }}
-              className={`w-full flex items-center space-x-3 px-4 py-3.5 rounded-xl font-medium transition-all ${
-                isActive('/profile')
-                  ? 'bg-white text-gray-900 shadow-lg border-2 border-orange-500 transform scale-105'
-                  : 'text-gray-700 hover:text-orange-600 hover:bg-orange-50 hover:translate-x-1'
-              }`}
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-              <span>Profile</span>
-            </button>
 
             {/* Divider */}
             <div className="pt-4 pb-2">

@@ -39,7 +39,6 @@ const NotificationsRouter = lazy(() => import('./components/NotificationsRouter'
 const AdminRestaurants = lazy(() => import('./components/AdminRestaurants'))
 const AdminDashboard = lazy(() => import('./components/AdminDashboard'))
 const AdminRiders = lazy(() => import('./components/AdminRiders'))
-const Profile = lazy(() => import('./components/Profile'))
 const Reports = lazy(() => import('./components/Reports'))
 const Settings = lazy(() => import('./components/Settings'))
 const PWAInstallPrompt = lazy(() => import('./components/PWAInstallPrompt'))
@@ -78,7 +77,6 @@ function App() {
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/auth/google/callback" element={<GoogleCallback />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/profile" element={<Profile />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/restaurants" element={<Restaurants />} />
             <Route path="/orders" element={<Orders />} />
