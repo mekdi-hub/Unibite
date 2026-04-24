@@ -26,7 +26,7 @@ const RestaurantOrders = ({ onOrderUpdate }) => {
       console.log('Filter:', filter)
       console.log('Search:', search)
       
-      const response = await axios.get(`${backendUrl}/api/restaurant/orders`, {
+      const response = await axios.get(`${backendUrl}/restaurant/orders`, {
         params: { status: filter, search },
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -99,7 +99,7 @@ const RestaurantOrders = ({ onOrderUpdate }) => {
       
       // Make API call in background
       const response = await axios.put(
-        `${backendUrl}/api/restaurant/orders/${orderId}/status`,
+        `${backendUrl}/restaurant/orders/${orderId}/status`,
         { status },
         {
           headers: {

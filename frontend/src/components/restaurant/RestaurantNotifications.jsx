@@ -19,7 +19,7 @@ const RestaurantNotifications = () => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
-      const response = await axios.get(`${backendUrl}/api/restaurant/notifications`, {
+      const response = await axios.get(`${backendUrl}/restaurant/notifications`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -52,7 +52,7 @@ const RestaurantNotifications = () => {
       const token = localStorage.getItem('token')
       
       await axios.put(
-        `${backendUrl}/api/restaurant/notifications/${notificationId}/read`,
+        `${backendUrl}/restaurant/notifications/${notificationId}/read`,
         {},
         {
           headers: {
@@ -83,7 +83,7 @@ const RestaurantNotifications = () => {
       const token = localStorage.getItem('token')
       
       await axios.post(
-        `${backendUrl}/api/restaurant/notifications/delete-multiple`,
+        `${backendUrl}/restaurant/notifications/delete-multiple`,
         { ids: notificationIds },
         {
           headers: {

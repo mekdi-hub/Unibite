@@ -146,8 +146,8 @@ const Home = () => {
       
       // Fetch restaurants, categories, and popular items
       const [restaurantsRes, categoriesRes] = await Promise.all([
-        axios.get(`${backendUrl}/api/restaurants`),
-        axios.get(`${backendUrl}/api/categories`)
+        axios.get(`${backendUrl}/restaurants`),
+        axios.get(`${backendUrl}/categories`)
       ])
 
       if (restaurantsRes.data.data) {
@@ -241,7 +241,7 @@ const Home = () => {
       const token = localStorage.getItem('token')
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
-      const response = await axios.get(`${backendUrl}/api/notifications/unread-count`, {
+      const response = await axios.get(`${backendUrl}/notifications/unread-count`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'

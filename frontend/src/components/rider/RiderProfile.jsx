@@ -33,7 +33,7 @@ const RiderProfile = () => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
-      const response = await axios.get(`${backendUrl}/api/rider/profile`, {
+      const response = await axios.get(`${backendUrl}/rider/profile`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -119,7 +119,7 @@ const RiderProfile = () => {
       })
       
       const response = await axios.put(
-        `${backendUrl}/api/rider/profile`,
+        `${backendUrl}/rider/profile`,
         formDataToSend,
         {
           headers: {
@@ -154,7 +154,7 @@ const RiderProfile = () => {
       const token = localStorage.getItem('token')
       
       const response = await axios.put(
-        `${backendUrl}/api/auth/change-password`,
+        `${backendUrl}/auth/change-password`,
         passwordData,
         {
           headers: {
@@ -184,7 +184,7 @@ const RiderProfile = () => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
-      const response = await axios.put(`${backendUrl}/api/rider/status`, {
+      const response = await axios.put(`${backendUrl}/rider/status`, {
         status: newStatus
       }, {
         headers: {

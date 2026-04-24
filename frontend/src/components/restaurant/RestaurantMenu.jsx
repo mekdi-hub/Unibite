@@ -28,7 +28,7 @@ const RestaurantMenu = () => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
-      const response = await axios.get(`${backendUrl}/api/restaurant/menu-items`, {
+      const response = await axios.get(`${backendUrl}/restaurant/menu-items`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -48,7 +48,7 @@ const RestaurantMenu = () => {
   const fetchCategories = async () => {
     try {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
-      const response = await axios.get(`${backendUrl}/api/categories`)
+      const response = await axios.get(`${backendUrl}/categories`)
       if (response.data.data) {
         setCategories(response.data.data)
       }
@@ -90,10 +90,10 @@ const RestaurantMenu = () => {
         }
       })
       
-      console.log('Sending request to:', `${backendUrl}/api/restaurant/menu-items`)
+      console.log('Sending request to:', `${backendUrl}/restaurant/menu-items`)
       
       const response = await axios.post(
-        `${backendUrl}/api/restaurant/menu-items`,
+        `${backendUrl}/restaurant/menu-items`,
         formDataToSend,
         {
           headers: {
@@ -158,7 +158,7 @@ const RestaurantMenu = () => {
       formDataToSend.append('_method', 'PUT')
       
       const response = await axios.post(
-        `${backendUrl}/api/restaurant/menu-items/${selectedItem.id}`,
+        `${backendUrl}/restaurant/menu-items/${selectedItem.id}`,
         formDataToSend,
         {
           headers: {
@@ -197,7 +197,7 @@ const RestaurantMenu = () => {
       const token = localStorage.getItem('token')
       
       const response = await axios.delete(
-        `${backendUrl}/api/restaurant/menu-items/${itemId}`,
+        `${backendUrl}/restaurant/menu-items/${itemId}`,
         {
           headers: {
             'Authorization': `Bearer ${token}`,

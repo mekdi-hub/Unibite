@@ -32,7 +32,7 @@ const RestaurantProfile = () => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
-      const response = await axios.get(`${backendUrl}/api/my-restaurant`, {
+      const response = await axios.get(`${backendUrl}/my-restaurant`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -88,7 +88,7 @@ const RestaurantProfile = () => {
       })
       
       const response = await axios.put(
-        `${backendUrl}/api/restaurant/profile`,
+        `${backendUrl}/restaurant/profile`,
         formDataToSend,
         {
           headers: {
@@ -123,7 +123,7 @@ const RestaurantProfile = () => {
       const token = localStorage.getItem('token')
       
       const response = await axios.put(
-        `${backendUrl}/api/auth/change-password`,
+        `${backendUrl}/auth/change-password`,
         passwordData,
         {
           headers: {

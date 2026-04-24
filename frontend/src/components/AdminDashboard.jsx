@@ -47,7 +47,7 @@ const AdminDashboard = () => {
       console.log('Backend URL:', backendUrl)
       console.log('Token:', token ? 'Present' : 'Missing')
       
-      const response = await axios.get(`${backendUrl}/api/admin/dashboard-stats`, {
+      const response = await axios.get(`${backendUrl}/admin/dashboard-stats`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -67,7 +67,7 @@ const AdminDashboard = () => {
       }
 
       // Fetch pending restaurants
-      const pendingResponse = await axios.get(`${backendUrl}/api/admin/restaurants/pending`, {
+      const pendingResponse = await axios.get(`${backendUrl}/admin/restaurants/pending`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'

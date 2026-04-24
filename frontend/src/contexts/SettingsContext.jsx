@@ -28,7 +28,7 @@ export const SettingsProvider = ({ children }) => {
   const fetchSettings = async () => {
     try {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
-      const response = await axios.get(`${backendUrl}/api/settings`)
+      const response = await axios.get(`${backendUrl}/settings`)
       
       if (response.data.success) {
         setSettings(response.data.data)
@@ -46,7 +46,7 @@ export const SettingsProvider = ({ children }) => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
-      const response = await axios.put(`${backendUrl}/api/settings`, newSettings, {
+      const response = await axios.put(`${backendUrl}/settings`, newSettings, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'

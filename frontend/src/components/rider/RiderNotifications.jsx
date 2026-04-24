@@ -51,7 +51,7 @@ const RiderNotifications = () => {
         return
       }
       
-      const response = await fetch(`${backendUrl}/api/rider/deliveries/accept`, {
+      const response = await fetch(`${backendUrl}/rider/deliveries/accept`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -119,7 +119,7 @@ const RiderNotifications = () => {
       const token = localStorage.getItem('token')
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
-      const response = await fetch(`${backendUrl}/api/rider/deliveries/reject`, {
+      const response = await fetch(`${backendUrl}/rider/deliveries/reject`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

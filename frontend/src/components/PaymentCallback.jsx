@@ -59,7 +59,7 @@ const PaymentCallback = () => {
         try {
           const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
           const response = await axios.get(
-            `${backendUrl}/api/orders/checkout-from-txref/${txRef}`,
+            `${backendUrl}/orders/checkout-from-txref/${txRef}`,
             {
               headers: {
                 'Authorization': `Bearer ${token}`,
@@ -99,12 +99,12 @@ const PaymentCallback = () => {
           console.log('Creating order with checkout ID:', checkoutId)
           console.log('Transaction reference:', txRef || 'TEST-' + Date.now())
           console.log('Backend URL:', backendUrl)
-          console.log('Making request to:', `${backendUrl}/api/orders/create-after-payment`)
+          console.log('Making request to:', `${backendUrl}/orders/create-after-payment`)
           
           // First, do a quick health check to see if backend is reachable
           try {
             console.log('🏥 Checking backend health...')
-            await axios.get(`${backendUrl}/api/health`, { timeout: 5000 })
+            await axios.get(`${backendUrl}/health`, { timeout: 5000 })
             console.log('✅ Backend is reachable')
           } catch (healthError) {
             console.error('❌ Backend health check failed:', healthError.message)
@@ -114,7 +114,7 @@ const PaymentCallback = () => {
           }
           
           const response = await axios.post(
-            `${backendUrl}/api/orders/create-after-payment`,
+            `${backendUrl}/orders/create-after-payment`,
             { 
               checkout_id: checkoutId,
               payment_reference: txRef || ('TEST-' + Date.now()) // Use test reference if no txRef

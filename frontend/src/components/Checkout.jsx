@@ -129,7 +129,7 @@ const Checkout = () => {
 
       // For cash on delivery, use the old endpoint
       if (paymentMethod === 'cash_on_delivery') {
-        const response = await axios.post(`${backendUrl}/api/orders`, orderData, {
+        const response = await axios.post(`${backendUrl}/orders`, orderData, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Accept': 'application/json',
@@ -151,7 +151,7 @@ const Checkout = () => {
         console.log('Using new checkout flow for payment method:', paymentMethod)
         console.log('Order data being sent:', orderData)
         
-        const response = await axios.post(`${backendUrl}/api/orders/checkout`, orderData, {
+        const response = await axios.post(`${backendUrl}/orders/checkout`, orderData, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Accept': 'application/json',
@@ -280,7 +280,7 @@ const Checkout = () => {
       console.log('Formatted phone number:', phoneNumber)
 
       const response = await axios.post(
-        `${backendUrl}/api/orders/${orderId}/payment/chapa/initialize`,
+        `${backendUrl}/orders/${orderId}/payment/chapa/initialize`,
         paymentData,
         {
           headers: {

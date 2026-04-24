@@ -83,7 +83,7 @@ const RestaurantRegistration = () => {
         submitData.append(`menuImages[${index}]`, file)
       })
 
-      const response = await fetch(`${backendUrl}/api/restaurant/register`, {
+      const response = await fetch(`${backendUrl}/restaurant/register`, {
         method: 'POST',
         body: submitData
       })

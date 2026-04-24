@@ -47,7 +47,7 @@ export const NotificationProvider = ({ children }) => {
       const token = localStorage.getItem('token')
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
-      const response = await fetch(`${backendUrl}/api/notifications`, {
+      const response = await fetch(`${backendUrl}/notifications`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -105,7 +105,7 @@ export const NotificationProvider = ({ children }) => {
       const token = localStorage.getItem('token')
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
-      const response = await fetch(`${backendUrl}/api/notifications/${notificationId}/read`, {
+      const response = await fetch(`${backendUrl}/notifications/${notificationId}/read`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -144,7 +144,7 @@ export const NotificationProvider = ({ children }) => {
       const token = localStorage.getItem('token')
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
-      const response = await fetch(`${backendUrl}/api/notifications/mark-all-read`, {
+      const response = await fetch(`${backendUrl}/notifications/mark-all-read`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,

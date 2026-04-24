@@ -34,7 +34,7 @@ const Users = () => {
       if (filterRole !== 'all') params.append('role', filterRole)
       if (searchTerm) params.append('search', searchTerm)
       
-      const response = await fetch(`${backendUrl}/api/admin/users?${params}`, {
+      const response = await fetch(`${backendUrl}/admin/users?${params}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -60,7 +60,7 @@ const Users = () => {
       const token = localStorage.getItem('token')
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
-      const response = await fetch(`${backendUrl}/api/admin/users/${userId}/status`, {
+      const response = await fetch(`${backendUrl}/admin/users/${userId}/status`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -92,7 +92,7 @@ const Users = () => {
         const token = localStorage.getItem('token')
         const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
         
-        const response = await fetch(`${backendUrl}/api/admin/users/${userId}`, {
+        const response = await fetch(`${backendUrl}/admin/users/${userId}`, {
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -166,7 +166,7 @@ const Users = () => {
       const token = localStorage.getItem('token')
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
-      const response = await fetch(`${backendUrl}/api/admin/users`, {
+      const response = await fetch(`${backendUrl}/admin/users`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

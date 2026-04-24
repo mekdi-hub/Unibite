@@ -27,11 +27,11 @@ const AdminRestaurants = () => {
       const token = localStorage.getItem('token')
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
-      let endpoint = `${backendUrl}/api/admin/restaurants`
+      let endpoint = `${backendUrl}/admin/restaurants`
       if (filter === 'pending') {
-        endpoint = `${backendUrl}/api/admin/restaurants/pending`
+        endpoint = `${backendUrl}/admin/restaurants/pending`
       } else if (filter !== 'all') {
-        endpoint = `${backendUrl}/api/admin/restaurants?status=${filter}`
+        endpoint = `${backendUrl}/admin/restaurants?status=${filter}`
       }
 
       const response = await axios.get(endpoint, {
@@ -57,7 +57,7 @@ const AdminRestaurants = () => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
       const response = await axios.post(
-        `${backendUrl}/api/admin/restaurants/${restaurantId}/approve`,
+        `${backendUrl}/admin/restaurants/${restaurantId}/approve`,
         {},
         {
           headers: {
@@ -86,7 +86,7 @@ const AdminRestaurants = () => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
       const response = await axios.post(
-        `${backendUrl}/api/admin/restaurants/${restaurantId}/reject`,
+        `${backendUrl}/admin/restaurants/${restaurantId}/reject`,
         {},
         {
           headers: {

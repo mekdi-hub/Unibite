@@ -17,7 +17,7 @@ const RiderEarnings = () => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
-      const response = await axios.get(`${backendUrl}/api/rider/earnings?period=${selectedPeriod}`, {
+      const response = await axios.get(`${backendUrl}/rider/earnings?period=${selectedPeriod}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -55,7 +55,7 @@ const RiderEarnings = () => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
-      const response = await axios.get(`${backendUrl}/api/rider/earnings-history?period=${selectedPeriod}`, {
+      const response = await axios.get(`${backendUrl}/rider/earnings-history?period=${selectedPeriod}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'

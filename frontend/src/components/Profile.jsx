@@ -58,7 +58,7 @@ const Profile = () => {
 
       // First, let's test if the user endpoint works
       try {
-        const userResponse = await axios.get(`${backendUrl}/api/user`, {
+        const userResponse = await axios.get(`${backendUrl}/user`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Accept': 'application/json'
@@ -75,7 +75,7 @@ const Profile = () => {
       }
 
       const response = await axios.patch(
-        `${backendUrl}/api/settings/profile`,
+        `${backendUrl}/settings/profile`,
         formData,
         {
           headers: {

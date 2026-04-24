@@ -47,7 +47,7 @@ const RiderDeliveries = ({ isOnline }) => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
-      const response = await axios.get(`${backendUrl}/api/deliveries/available`, {
+      const response = await axios.get(`${backendUrl}/deliveries/available`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -82,7 +82,7 @@ const RiderDeliveries = ({ isOnline }) => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
-      const response = await axios.get(`${backendUrl}/api/rider/active-delivery`, {
+      const response = await axios.get(`${backendUrl}/rider/active-delivery`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -123,7 +123,7 @@ const RiderDeliveries = ({ isOnline }) => {
         return
       }
       
-      const response = await axios.post(`${backendUrl}/api/deliveries/${deliveryId}/accept`, {
+      const response = await axios.post(`${backendUrl}/deliveries/${deliveryId}/accept`, {
         delivery_id: deliveryId,
         order_id: delivery.order_id
       }, {
@@ -168,7 +168,7 @@ const RiderDeliveries = ({ isOnline }) => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
-      const response = await axios.put(`${backendUrl}/api/deliveries/${activeDelivery.id}/status`, {
+      const response = await axios.put(`${backendUrl}/deliveries/${activeDelivery.id}/status`, {
         status
       }, {
         headers: {

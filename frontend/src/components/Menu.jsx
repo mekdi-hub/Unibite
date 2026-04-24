@@ -71,9 +71,9 @@ const Menu = () => {
       
       // Fetch restaurant details and menu items
       const [restaurantRes, menuRes, catRes] = await Promise.all([
-        axios.get(`${backendUrl}/api/restaurants/${id}`),
-        axios.get(`${backendUrl}/api/restaurants/${id}/menu-items`),
-        axios.get(`${backendUrl}/api/categories`)
+        axios.get(`${backendUrl}/restaurants/${id}`),
+        axios.get(`${backendUrl}/restaurants/${id}/menu-items`),
+        axios.get(`${backendUrl}/categories`)
       ])
       
       setRestaurant(restaurantRes.data.data)

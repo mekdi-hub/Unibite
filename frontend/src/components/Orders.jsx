@@ -32,8 +32,8 @@ const Orders = () => {
       
       // If user is admin, fetch all orders, otherwise fetch user's orders
       const endpoint = user?.role === 'admin' 
-        ? `${backendUrl}/api/admin/orders`
-        : `${backendUrl}/api/orders`
+        ? `${backendUrl}/admin/orders`
+        : `${backendUrl}/orders`
       
       console.log('Fetching orders from:', endpoint)
       
@@ -145,7 +145,7 @@ const Orders = () => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
 
-      const response = await fetch(`${backendUrl}/api/orders/${orderId}`, {
+      const response = await fetch(`${backendUrl}/orders/${orderId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -216,7 +216,7 @@ const Orders = () => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
 
-      const response = await fetch(`${backendUrl}/api/orders/${orderId}/cancel`, {
+      const response = await fetch(`${backendUrl}/orders/${orderId}/cancel`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,

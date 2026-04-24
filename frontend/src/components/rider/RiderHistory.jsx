@@ -23,7 +23,7 @@ const RiderHistory = () => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
-      const response = await axios.get(`${backendUrl}/api/rider/order-history`, {
+      const response = await axios.get(`${backendUrl}/rider/order-history`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'

@@ -37,7 +37,7 @@ const RiderHome = ({ isOnline, toggleOnlineStatus }) => {
         return
       }
       
-      const response = await axios.get(`${backendUrl}/api/rider/dashboard-stats`, {
+      const response = await axios.get(`${backendUrl}/rider/dashboard-stats`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -79,7 +79,7 @@ const RiderHome = ({ isOnline, toggleOnlineStatus }) => {
         return
       }
       
-      const response = await axios.get(`${backendUrl}/api/rider/earnings`, {
+      const response = await axios.get(`${backendUrl}/rider/earnings`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -107,7 +107,7 @@ const RiderHome = ({ isOnline, toggleOnlineStatus }) => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
-      const response = await axios.get(`${backendUrl}/api/rider/active-delivery`, {
+      const response = await axios.get(`${backendUrl}/rider/active-delivery`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -131,7 +131,7 @@ const RiderHome = ({ isOnline, toggleOnlineStatus }) => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
-      const response = await axios.get(`${backendUrl}/api/deliveries/available`, {
+      const response = await axios.get(`${backendUrl}/deliveries/available`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -154,7 +154,7 @@ const RiderHome = ({ isOnline, toggleOnlineStatus }) => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
-      const response = await axios.post(`${backendUrl}/api/deliveries/${orderId}/accept`, {}, {
+      const response = await axios.post(`${backendUrl}/deliveries/${orderId}/accept`, {}, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'

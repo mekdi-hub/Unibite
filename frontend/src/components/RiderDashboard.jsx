@@ -70,7 +70,7 @@ const RiderDashboard = () => {
         return
       }
       
-      const response = await axios.get(`${backendUrl}/api/rider/profile`, {
+      const response = await axios.get(`${backendUrl}/rider/profile`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -108,7 +108,7 @@ const RiderDashboard = () => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
-      const response = await axios.get(`${backendUrl}/api/deliveries/available`, {
+      const response = await axios.get(`${backendUrl}/deliveries/available`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -130,7 +130,7 @@ const RiderDashboard = () => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
-      const response = await axios.get(`${backendUrl}/api/rider/notifications`, {
+      const response = await axios.get(`${backendUrl}/rider/notifications`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -159,7 +159,7 @@ const RiderDashboard = () => {
         return
       }
       
-      const response = await axios.put(`${backendUrl}/api/rider/toggle-status`, {
+      const response = await axios.put(`${backendUrl}/rider/toggle-status`, {
         is_online: !isOnline
       }, {
         headers: {

@@ -24,7 +24,7 @@ const AdminRiders = () => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
-      const response = await axios.get(`${backendUrl}/api/admin/riders`, {
+      const response = await axios.get(`${backendUrl}/admin/riders`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'

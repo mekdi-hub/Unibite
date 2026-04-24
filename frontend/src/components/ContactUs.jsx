@@ -31,7 +31,7 @@ const ContactUs = () => {
 
     try {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
-      await axios.post(`${backendUrl}/api/contact`, formData)
+      await axios.post(`${backendUrl}/contact`, formData)
       
       setSuccess(true)
       setFormData({

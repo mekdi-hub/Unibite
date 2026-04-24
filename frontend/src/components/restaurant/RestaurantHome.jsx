@@ -33,7 +33,7 @@ const RestaurantHome = () => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
-      const response = await axios.get(`${backendUrl}/api/my-restaurant`, {
+      const response = await axios.get(`${backendUrl}/my-restaurant`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -56,7 +56,7 @@ const RestaurantHome = () => {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
-      const response = await axios.get(`${backendUrl}/api/restaurant/dashboard-stats`, {
+      const response = await axios.get(`${backendUrl}/restaurant/dashboard-stats`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
