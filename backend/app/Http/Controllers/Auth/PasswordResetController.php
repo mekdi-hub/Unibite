@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
 use App\Models\User;
 
 class PasswordResetController extends Controller
@@ -20,19 +21,29 @@ class PasswordResetController extends Controller
             'email' => 'required|email|exists:users,email',
         ]);
 
-        $status = Password::sendResetLink(
-            $request->only('email')
-        );
+        try {
+            $status = Password::sendResetLink(
+                $request->only('email')
+            );
 
-        if ($status === Password::RESET_LINK_SENT) {
+            Log::info('Password reset link status: ' . $status);
+
+            if ($status === Password::RESET_LINK_SENT) {
+                return response()->json([
+                    'message' => 'Password reset link sent to your email',
+                ], 200);
+            }
+
             return response()->json([
-                'message' => 'Password reset link sent to your email',
-            ], 200);
+                'message' => 'Unable to send reset link. Please try again.',
+            ], 500);
+        } catch (\Exception $e) {
+            Log::error('Password reset error: ' . $e->getMessage());
+            return response()->json([
+                'message' => 'An error occurred while sending the reset link.',
+                'error' => $e->getMessage()
+            ], 500);
         }
-
-        return response()->json([
-            'message' => 'Unable to send reset link',
-        ], 500);
     }
 
     /**
@@ -46,25 +57,35 @@ class PasswordResetController extends Controller
             'password' => 'required|min:8|confirmed',
         ]);
 
-        $status = Password::reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
-            function (User $user, string $password) {
-                $user->forceFill([
-                    'password' => Hash::make($password)
-                ])->setRememberToken(Str::random(60));
+        try {
+            $status = Password::reset(
+                $request->only('email', 'password', 'password_confirmation', 'token'),
+                function (User $user, string $password) {
+                    $user->forceFill([
+                        'password' => Hash::make($password)
+                    ])->setRememberToken(Str::random(60));
 
-                $user->save();
+                    $user->save();
+                }
+            );
+
+            Log::info('Password reset status: ' . $status);
+
+            if ($status === Password::PASSWORD_RESET) {
+                return response()->json([
+                    'message' => 'Password has been reset successfully',
+                ], 200);
             }
-        );
 
-        if ($status === Password::PASSWORD_RESET) {
             return response()->json([
-                'message' => 'Password has been reset successfully',
-            ], 200);
+                'message' => 'Unable to reset password. The token may be invalid or expired.',
+            ], 400);
+        } catch (\Exception $e) {
+            Log::error('Password reset error: ' . $e->getMessage());
+            return response()->json([
+                'message' => 'An error occurred while resetting the password.',
+                'error' => $e->getMessage()
+            ], 500);
         }
-
-        return response()->json([
-            'message' => 'Unable to reset password',
-        ], 500);
     }
 }

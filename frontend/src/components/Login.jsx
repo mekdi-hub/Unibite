@@ -11,6 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [googleLoading, setGoogleLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const [rememberMe, setRememberMe] = useState(false)
   
@@ -55,8 +56,10 @@ const Login = () => {
   }
 
   const handleGoogleLogin = () => {
+    if (googleLoading) return // Prevent multiple clicks
+    
+    setGoogleLoading(true)
     // Redirect to backend Google OAuth
-    // Use the backend URL (works through Vite proxy or direct)
     const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
     window.location.href = `${backendUrl}/auth/google`
   }
@@ -334,10 +337,20 @@ const Login = () => {
             <button 
               type="button"
               onClick={handleGoogleLogin}
-              className="w-full flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 border-2 border-gray-200 rounded-xl hover:bg-gray-50 hover:border-red-200 transition-all duration-200 group"
+              disabled={googleLoading}
+              className="w-full flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 border-2 border-gray-200 rounded-xl hover:bg-gray-50 hover:border-red-200 transition-all duration-200 group disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <FcGoogle className="h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-3" />
-              <span className="text-sm sm:text-base text-gray-700 font-medium group-hover:text-gray-800">Continue with Google</span>
+              {googleLoading ? (
+                <>
+                  <div className="animate-spin rounded-full h-4 w-4 sm:h-5 sm:w-5 border-b-2 border-red-500 mr-2 sm:mr-3"></div>
+                  <span className="text-sm sm:text-base text-gray-700 font-medium">Connecting...</span>
+                </>
+              ) : (
+                <>
+                  <FcGoogle className="h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-3" />
+                  <span className="text-sm sm:text-base text-gray-700 font-medium group-hover:text-gray-800">Continue with Google</span>
+                </>
+              )}
             </button>
             <button className="w-full flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 border-2 border-gray-200 rounded-xl hover:bg-gray-50 hover:border-red-200 transition-all duration-200 group">
               <FaApple className="h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-3 text-black" />

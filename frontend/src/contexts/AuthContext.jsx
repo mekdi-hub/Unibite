@@ -155,19 +155,22 @@ export const AuthProvider = ({ children }) => {
   }
 
   const logout = async () => {
+    // Immediately clear local state and storage for instant UI feedback
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+    setToken(null)
+    setUser(null)
+    delete axios.defaults.headers.common['Authorization']
+    
+    // Redirect immediately
+    window.location.replace('/login')
+    
+    // Try to notify backend in background (non-blocking)
     try {
       await axios.post('/auth/logout')
     } catch (error) {
-      console.error('Logout error:', error)
-    } finally {
-      localStorage.removeItem('token')
-      localStorage.removeItem('user')
-      setToken(null)
-      setUser(null)
-      // Clear axios default headers
-      delete axios.defaults.headers.common['Authorization']
-      // Redirect to login page and replace history to prevent back button
-      window.location.replace('/login')
+      // Silently fail - user is already logged out on frontend
+      console.error('Logout backend notification failed:', error)
     }
   }
 
