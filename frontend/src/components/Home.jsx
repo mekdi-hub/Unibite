@@ -142,7 +142,7 @@ const Home = () => {
 
   const fetchData = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
       // Fetch restaurants, categories, and popular items
       const [restaurantsRes, categoriesRes] = await Promise.all([
@@ -239,7 +239,7 @@ const Home = () => {
   const fetchUnreadCount = async () => {
     try {
       const token = localStorage.getItem('token')
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
       const response = await axios.get(`${backendUrl}/api/notifications/unread-count`, {
         headers: {
@@ -268,8 +268,8 @@ const Home = () => {
   }, [user])
 
   const handleGoogleLogin = () => {
-    const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
-    window.location.href = `${backendUrl}/api/auth/google`
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
+    window.location.href = `${backendUrl}/auth/google`
   }
 
   const filteredRestaurants = restaurants.filter(restaurant => {

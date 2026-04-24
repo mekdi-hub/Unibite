@@ -21,7 +21,7 @@ const CustomerNotifications = () => {
 
   const fetchNotifications = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.get(`${backendUrl}/api/notifications`, {
@@ -48,7 +48,7 @@ const CustomerNotifications = () => {
     ))
 
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       await axios.put(
@@ -85,7 +85,7 @@ const CustomerNotifications = () => {
     })))
 
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       await Promise.all(
@@ -114,7 +114,7 @@ const CustomerNotifications = () => {
 
   const handleDelete = async (notificationIds) => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       await axios.post(

@@ -67,7 +67,7 @@ const Menu = () => {
 
   const fetchRestaurantData = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       
       // Fetch restaurant details and menu items
       const [restaurantRes, menuRes, catRes] = await Promise.all([

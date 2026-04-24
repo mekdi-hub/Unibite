@@ -43,7 +43,7 @@ const Profile = () => {
     setLoading(true)
 
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
 
       if (!token) {

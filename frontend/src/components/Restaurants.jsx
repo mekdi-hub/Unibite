@@ -20,7 +20,7 @@ const Restaurants = () => {
 
   const fetchRestaurants = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const response = await axios.get(`${backendUrl}/api/restaurants`)
       
       if (response.data.data) {

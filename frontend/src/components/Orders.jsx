@@ -25,7 +25,7 @@ const Orders = () => {
 
   const fetchOrders = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       console.log('User role:', user?.role)
@@ -142,7 +142,7 @@ const Orders = () => {
     }
 
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
 
       const response = await fetch(`${backendUrl}/api/orders/${orderId}`, {
@@ -213,7 +213,7 @@ const Orders = () => {
     }
 
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
 
       const response = await fetch(`${backendUrl}/api/orders/${orderId}/cancel`, {

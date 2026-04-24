@@ -3,7 +3,7 @@ import { apiCache } from './apiCache'
 
 // Create optimized axios instance
 const api = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL || 'https://backendi.test',
+  baseURL: import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api',
   timeout: 10000, // 10 seconds
   headers: {
     'Content-Type': 'application/json',

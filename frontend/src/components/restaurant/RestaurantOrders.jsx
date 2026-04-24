@@ -17,7 +17,7 @@ const RestaurantOrders = ({ onOrderUpdate }) => {
 
   const fetchOrders = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       console.log('Fetching restaurant orders...')
@@ -94,7 +94,7 @@ const RestaurantOrders = ({ onOrderUpdate }) => {
     setTimeout(() => setSuccessMessage(''), 5000)
     
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       // Make API call in background

@@ -225,7 +225,7 @@ const Checkout = () => {
 
   const initializeChapaPayment = async (orderId) => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
 
       console.log('Initializing Chapa payment for order:', orderId)

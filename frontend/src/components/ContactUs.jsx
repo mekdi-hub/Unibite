@@ -30,7 +30,7 @@ const ContactUs = () => {
     setSuccess(false)
 
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       await axios.post(`${backendUrl}/api/contact`, formData)
       
       setSuccess(true)

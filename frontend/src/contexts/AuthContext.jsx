@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
 import axios from 'axios'
 
 // Set base URL from environment variable
-axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
 axios.defaults.timeout = 10000 // 10 second timeout
 
 const AuthContext = createContext()

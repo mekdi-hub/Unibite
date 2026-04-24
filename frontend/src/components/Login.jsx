@@ -57,16 +57,16 @@ const Login = () => {
   const handleGoogleLogin = () => {
     // Redirect to backend Google OAuth
     // Use the backend URL (works through Vite proxy or direct)
-    const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://backendi.test'
-    window.location.href = `${backendUrl}/api/auth/google`
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
+    window.location.href = `${backendUrl}/auth/google`
   }
 
   const testConnection = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
-      console.log('Testing connection to:', `${backendUrl}/api/health`)
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
+      console.log('Testing connection to:', `${backendUrl}/health`)
       
-      const response = await fetch(`${backendUrl}/api/health`)
+      const response = await fetch(`${backendUrl}/health`)
       const data = await response.json()
       console.log('Health check response:', data)
       alert(`Backend connection successful! Status: ${data.status}`)

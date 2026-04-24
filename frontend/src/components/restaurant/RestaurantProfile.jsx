@@ -29,7 +29,7 @@ const RestaurantProfile = () => {
 
   const fetchRestaurantProfile = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.get(`${backendUrl}/api/my-restaurant`, {
@@ -77,7 +77,7 @@ const RestaurantProfile = () => {
   const handleUpdateProfile = async (e) => {
     e.preventDefault()
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const formDataToSend = new FormData()
@@ -119,7 +119,7 @@ const RestaurantProfile = () => {
     }
     
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.put(

@@ -25,7 +25,7 @@ const RestaurantMenu = () => {
 
   const fetchMenuItems = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.get(`${backendUrl}/api/restaurant/menu-items`, {
@@ -47,7 +47,7 @@ const RestaurantMenu = () => {
 
   const fetchCategories = async () => {
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const response = await axios.get(`${backendUrl}/api/categories`)
       if (response.data.data) {
         setCategories(response.data.data)
@@ -74,7 +74,7 @@ const RestaurantMenu = () => {
     console.log('Form data:', formData)
     
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       console.log('Backend URL:', backendUrl)
@@ -144,7 +144,7 @@ const RestaurantMenu = () => {
     setErrors({}) // Clear previous errors
     
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const formDataToSend = new FormData()
@@ -193,7 +193,7 @@ const RestaurantMenu = () => {
     if (!window.confirm('Are you sure you want to delete this item?')) return
     
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://backendi.test'
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://unibite-sxc9.onrender.com/api'
       const token = localStorage.getItem('token')
       
       const response = await axios.delete(
