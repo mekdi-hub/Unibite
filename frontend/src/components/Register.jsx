@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaArrowRight, FaUser, FaPhone } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
-import { FaApple } from 'react-icons/fa'
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -264,21 +263,6 @@ const Register = () => {
               {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone[0]}</p>}
             </div>
 
-            {/* Role Selection */}
-            <div className="space-y-2">
-              <label className="block text-sm font-semibold text-gray-700">I am a</label>
-              <select
-                name="role"
-                value={formData.role}
-                onChange={handleChange}
-                className="block w-full px-4 py-2.5 sm:py-3.5 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-white text-gray-800 text-sm sm:text-base transition-all duration-200 hover:border-gray-300"
-              >
-                <option value="student">Student</option>
-                <option value="restaurant">Restaurant Owner</option>
-                <option value="rider">Delivery Rider</option>
-              </select>
-            </div>
-
             {/* Password Input */}
             <div className="space-y-2">
               <label className="block text-sm font-semibold text-gray-700">Password</label>
@@ -394,10 +378,6 @@ const Register = () => {
             <button className="w-full flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 border-2 border-gray-200 rounded-xl hover:bg-gray-50 hover:border-red-200 transition-all duration-200 group">
               <FcGoogle className="h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-3" />
               <span className="text-sm sm:text-base text-gray-700 font-medium group-hover:text-gray-800">Continue with Google</span>
-            </button>
-            <button className="w-full flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 border-2 border-gray-200 rounded-xl hover:bg-gray-50 hover:border-red-200 transition-all duration-200 group">
-              <FaApple className="h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-3 text-black" />
-              <span className="text-sm sm:text-base text-gray-700 font-medium group-hover:text-gray-800">Continue with Apple</span>
             </button>
           </div>
 

@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaArrowRight } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
-import { FaApple } from 'react-icons/fa'
 import { Button } from './ui'
 
 const Login = () => {
@@ -351,10 +350,6 @@ const Login = () => {
                   <span className="text-sm sm:text-base text-gray-700 font-medium group-hover:text-gray-800">Continue with Google</span>
                 </>
               )}
-            </button>
-            <button className="w-full flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 border-2 border-gray-200 rounded-xl hover:bg-gray-50 hover:border-red-200 transition-all duration-200 group">
-              <FaApple className="h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-3 text-black" />
-              <span className="text-sm sm:text-base text-gray-700 font-medium group-hover:text-gray-800">Continue with Apple</span>
             </button>
           </div>
 
