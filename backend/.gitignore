@@ -26,3 +26,15 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+
+# Database backups - NEVER commit these!
+*.sql
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*backup*.sql
+*_backup_*.sql
+unibite_backup*.sql
+backup/
+backups/
